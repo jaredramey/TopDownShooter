@@ -10,7 +10,10 @@ const float Player::PLAYER_HEIGTH = 75;
 
 Player::Player() : Entity(PLAYER_X, PLAYER_Y, PLAYER_WIDTH, PLAYER_HEIGTH, PLAYER_SPRITE_PATH)
 {
-
+	for (int i = 0; i < Max_Bullets; i++)
+	{
+		playerBullets.push_back(new Bullet());
+	}
 }
 
 void Player::SetVelocity(float a_velocity)
@@ -98,12 +101,21 @@ void Player::Move(float a_speed, float a_timeStep)
 	//Shooting
 	if (IsKeyDown(fire))
 	{
-
+		for (int i = 0; i < Max_Bullets; i++)
+		{
+			Shoot(bullets[i].bulletTextureID, GetDeltaTime());
+		}
 	}
 
 	//Move the player sprite and it's corners
 	SetCorners();
 	MoveSprite(GetSprite(), GetX(), GetY());
+	for (int i = 0; i < Max_Bullets; i++)
+	{
+		MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
+		DrawSprite(bullets[i].bulletTextureID);
+	}
+	
 }
 
 Player::~Player()

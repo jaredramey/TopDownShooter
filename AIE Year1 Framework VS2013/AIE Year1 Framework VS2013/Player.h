@@ -1,8 +1,9 @@
 #pragma once
 #include "Entity.h"
 #include "Bullet.h"
+#include <vector>
 
-const int Max_Bullets = 20;
+const int Max_Bullets = 5;
 
 class Player : public Entity
 {
@@ -23,6 +24,7 @@ public:
 
 	//Everything for Bullets handled by Player
 	Bullet bullets[Max_Bullets];
+	std::vector<Bullet> playerBullets;
 	float currentRealodBulletTime = 0.0f;
 	float maxBulletReloadTime = 1.0f;
 	bool setTextures = false;

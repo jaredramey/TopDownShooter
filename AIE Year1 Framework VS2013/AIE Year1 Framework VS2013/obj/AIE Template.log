@@ -1,14 +1,15 @@
-﻿Build started 10/21/2014 7:23:48 AM.
+﻿Build started 10/21/2014 9:41:34 AM.
      1>Project "C:\Users\Oezaxs\Documents\GitHub\TopDownShooter\AIE Year1 Framework VS2013\AIE Year1 Framework VS2013\AIE Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameState.cpp Player.cpp source\main.cpp
-         GameState.cpp
-         Generating Code...
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bullet.cpp Entity.cpp GameState.cpp Player.cpp source\main.cpp
          main.cpp
          Player.cpp
      1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\player.cpp(36): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
      1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\player.cpp(41): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
+         GameState.cpp
+         Entity.cpp
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\entity.cpp(72): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         Bullet.cpp
          Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\Bullet.obj
@@ -49,4 +50,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.64
+Time Elapsed 00:00:03.61

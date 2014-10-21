@@ -6,7 +6,6 @@ public:
 	struct Bullets
 	{
 		unsigned int BulletTecture;
-
 	};
 
 	float x;
