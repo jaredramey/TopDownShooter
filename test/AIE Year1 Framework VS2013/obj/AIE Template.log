@@ -1,0 +1,24 @@
+﻿Build started 10/20/2014 1:41:48 PM.
+     1>Project "C:\Users\jared.ramey\Documents\GitHub\TopDownShooter\test\AIE Year1 Framework VS2013\AIE Template.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\Player.obj
+         obj\main.obj
+         AIE_1st_Year_Framework_d.lib(SOIL.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     1>Player.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>Player.obj : error LNK2001: unresolved external symbol "public: void __thiscall Entity::ChangeX(float,int)" (?ChangeX@Entity@@QAEXMH@Z)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: void __thiscall Entity::SetCorners(void)" (?SetCorners@Entity@@QAEXXZ)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: float __thiscall Entity::GetX(void)" (?GetX@Entity@@QAEMXZ)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: float __thiscall Entity::GetY(void)" (?GetY@Entity@@QAEMXZ)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: float __thiscall Entity::GetWidth(void)" (?GetWidth@Entity@@QAEMXZ)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: unsigned int __thiscall Entity::GetSprite(void)" (?GetSprite@Entity@@QAEIXZ)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: __thiscall Entity::Entity(float,float,float,float,char const *)" (??0Entity@@QAE@MMMMPBD@Z)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall Entity::~Entity(void)" (??1Entity@@UAE@XZ)
+     1>bin\AIE Template_d.exe : fatal error LNK1120: 8 unresolved externals
+     1>Done Building Project "C:\Users\jared.ramey\Documents\GitHub\TopDownShooter\test\AIE Year1 Framework VS2013\AIE Template.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.20
