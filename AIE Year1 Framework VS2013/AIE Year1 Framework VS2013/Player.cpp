@@ -45,7 +45,7 @@ void Player::Shoot(unsigned int a_textureID, float delta)
 {
 	if (IsKeyDown(32) /*&& currentRealodBulletTime >= maxBulletReloadTime*/)
 	{
-		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0, 100, a_textureID);
+		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 10.0f, 300.f, a_textureID);
 	}
 
 	currentRealodBulletTime += delta;
@@ -98,7 +98,7 @@ void Player::Move(float a_speed, float a_timeStep)
 	//Shooting
 	if (IsKeyDown(fire))
 	{
-	
+
 	}
 
 	//Move the player sprite and it's corners

@@ -8,6 +8,8 @@ int main( int argc, char* argv[] )
     Initialise(800, 1000, false, "Top Down Shooter");
     SetBackgroundColour(SColour(0, 0, 0, 255));
 
+	bool gameLoop = true;
+
 	//Initiate Bullet
 	Bullet bullet = Bullet();
 	bullet.bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 0, 0,true);
@@ -22,6 +24,11 @@ int main( int argc, char* argv[] )
     {
         ClearScreen();
 
+		if(IsKeyDown(/*value for Esc, placehold with Q for now*/ 'Q'))
+		{
+			gameLoop = false;
+		}
+
 		player.Move(500.f, GetDeltaTime());
 		DrawSprite(player.GetSprite());
 		if (IsKeyDown(32))
@@ -29,12 +36,12 @@ int main( int argc, char* argv[] )
 			player.Shoot(bullet.bulletTextureID, GetDeltaTime());
 			for (int i = 0; i < Max_Bullets; i++)
 			{
-				player.bullets[i].Update(0.01f);
+				player.bullets[i].Update(GetDeltaTime());
 				player.bullets[i].Draw();
 			}
 		}
 
-    } while(!FrameworkUpdate());
+    } while(!FrameworkUpdate() && gameLoop == true);
 
     Shutdown();
 

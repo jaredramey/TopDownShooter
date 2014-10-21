@@ -22,6 +22,7 @@ public:
 	void Draw();
 	void InitializeBullet(float a_x, float a_y, float a_velocityX, float a_velocityY, unsigned int a_textureID);
 	void TextureID(unsigned int a_textureID);
+	unsigned int GetBulletTexture();
 
 	bool isActive;
 

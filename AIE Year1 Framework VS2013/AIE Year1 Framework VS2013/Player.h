@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "Bullet.h"
 
-const int Max_Bullets = 5;
+const int Max_Bullets = 20;
 
 class Player : public Entity
 {

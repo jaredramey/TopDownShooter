@@ -33,6 +33,8 @@ void Bullet::Update(float delta)
 		x += velocityX * delta;
 		y += velocityY * delta;
 	}
+
+	//MoveSprite(bulletTextureID, x, y);
 }
 
 void Bullet::InitializeBullet(float a_x, float a_y, float a_velocityX, float a_velocityY, unsigned int a_textureID)
@@ -43,6 +45,11 @@ void Bullet::InitializeBullet(float a_x, float a_y, float a_velocityX, float a_v
 	velocityY = a_velocityY;
 
 	isActive = true;
+}
+
+unsigned int Bullet::GetBulletTexture()
+{
+	return bulletTextureID;
 }
 
 Bullet::~Bullet()
