@@ -1,6 +1,7 @@
 ﻿#include "AIE.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "EnemyShips.h"
 #include <iostream>
 
 int main( int argc, char* argv[] )
@@ -18,6 +19,8 @@ int main( int argc, char* argv[] )
 	player.SetVelocity(300.f);
 	player.SetMovementKeys(65, 68, 32);
 	player.SetMoveExtreeme(0, 800);
+	EnemyShips enemy = EnemyShips();
+	MoveSprite(enemy.GetSprite(), enemy.GetX(), enemy.GetY());
 
     //Game Loop
     do
@@ -31,6 +34,9 @@ int main( int argc, char* argv[] )
 
 		player.Move(500.f, GetDeltaTime());
 		DrawSprite(player.GetSprite());
+		enemy.ShipMovements(0.3f);
+		DrawSprite(enemy.GetSprite());
+		
 
     } while(!FrameworkUpdate() && gameLoop == true);
 

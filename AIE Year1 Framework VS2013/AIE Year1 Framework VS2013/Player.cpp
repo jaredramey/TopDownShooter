@@ -60,15 +60,21 @@ Bullet& Player::GetInactiveBullet()
 	{
 		for (int i = 0; i < Max_Bullets; i++)
 		{
-			bullets[i].bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
+			(*playerBullets[i]).bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
 		}
+
+		/*for (int i = 0; i < Max_Bullets; i++)
+		{
+			bullets[i].bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
+		}*/
 		setTextures = true;
 	}
 	for (int i = 0; i < Max_Bullets; i++)
 	{
 		if (!bullets[i].isActive && currentRealodBulletTime >= maxBulletReloadTime)
 		{
-			return bullets[i];
+			//return bullets[i];
+			return (*playerBullets[i]);
 		}
 
 	}
@@ -103,17 +109,24 @@ void Player::Move(float a_speed, float a_timeStep)
 	{
 		for (int i = 0; i < Max_Bullets; i++)
 		{
-			Shoot(bullets[i].bulletTextureID, GetDeltaTime());
+			Shoot((*playerBullets[i]).bulletTextureID, GetDeltaTime());
+			//(*playerBullets[i]).Draw();
+			MoveSprite((*playerBullets[i]).bulletTextureID, (*playerBullets[i]).x, (*playerBullets[i]).y);
+			DrawSprite((*playerBullets[i]).bulletTextureID);
 		}
 	}
 
 	//Move the player sprite and it's corners
 	SetCorners();
 	MoveSprite(GetSprite(), GetX(), GetY());
-	for (int i = 0; i < Max_Bullets; i++)
+	for (int i = 0; i < Max_Bullets; i++ )
 	{
-		MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
-		DrawSprite(bullets[i].bulletTextureID);
+		if (currentRealodBulletTime >= maxBulletReloadTime)
+		{
+			
+			//MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
+			//DrawSprite(bullets[i].bulletTextureID);
+		}
 	}
 	
 }

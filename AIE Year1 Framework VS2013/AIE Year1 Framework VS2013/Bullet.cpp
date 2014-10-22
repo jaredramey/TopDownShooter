@@ -15,8 +15,8 @@ void Bullet::Draw()
 {
 	if (isActive)
 	{
-		//MoveSprite(bulletTextureID, x, y);
-		//DrawSprite(bulletTextureID);
+		MoveSprite(bulletTextureID, x, y);
+		DrawSprite(bulletTextureID);
 	}
 }
 
