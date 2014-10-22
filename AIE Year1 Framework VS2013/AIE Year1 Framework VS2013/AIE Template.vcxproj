@@ -94,6 +94,7 @@
     <ClCompile Include="EnemyShips.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GlobalInfo.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
@@ -102,6 +103,7 @@
     <ClInclude Include="EnemyShips.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GlobalInfo.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

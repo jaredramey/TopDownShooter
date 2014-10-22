@@ -48,7 +48,11 @@ void Player::Shoot(unsigned int a_textureID, float delta)
 {
 	if (IsKeyDown(32) /*&& currentRealodBulletTime >= maxBulletReloadTime*/)
 	{
-		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 10.0f, 300.f, a_textureID);
+		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0.0f, 0.5f, a_textureID);
+		for (int i = 0; i < Max_Bullets; i++)
+		{
+			(*playerBullets[i]).Update(GetDeltaTime());
+		}
 	}
 
 	currentRealodBulletTime += delta;
@@ -71,15 +75,17 @@ Bullet& Player::GetInactiveBullet()
 	}
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		if (!bullets[i].isActive && currentRealodBulletTime >= maxBulletReloadTime)
+		if (!(*playerBullets[i]).isActive && currentRealodBulletTime >= maxBulletReloadTime)
 		{
 			//return bullets[i];
 			return (*playerBullets[i]);
 		}
 
 	}
-
-	return bullets[0];
+	for (int i = 0; i < Max_Bullets; i++)
+	{
+		return (*playerBullets[i]);
+	}
 }
 
 void Player::Move(float a_speed, float a_timeStep)

@@ -7,6 +7,8 @@ public:
 	bool left = false;
 	bool right = false;
 	int direction;
+	float newLocation;
+	float speed;
 
 	bool isActive;
 	bool thisDirection = true;
@@ -14,8 +16,10 @@ public:
 
 	void ShipMovements(float speed);
 	void Direction();
+	void LocationSpawn(float a_x, float a_y);
 
 	EnemyShips();
+	EnemyShips(float a_x, float a_y);
 	~EnemyShips();
 
 	static const char* ENEMY_SPRITE_PATH;

@@ -9,7 +9,7 @@ GameState::GameState()
 
 void GameState::GamePlay()
 {
-	//DrawSprite(player.GetSprite());
+	
 }
 
 GameState::~GameState()

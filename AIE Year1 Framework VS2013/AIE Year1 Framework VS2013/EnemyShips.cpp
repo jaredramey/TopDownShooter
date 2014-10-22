@@ -14,6 +14,11 @@ EnemyShips::EnemyShips() : Entity(ENEMY_X, ENEMY_Y, ENEMY_WIDTH, ENEMY_HEIGTH, E
 
 }
 
+EnemyShips::EnemyShips(float a_x, float a_y) : Entity(a_x, a_y, ENEMY_WIDTH, ENEMY_HEIGTH, ENEMY_SPRITE_PATH)
+{
+	speed = (((rand() % 4) + 2) *.1);
+}
+
 void EnemyShips::ShipMovements(float a_speed)
 {
 	/*if (left == false && right == false)
@@ -51,60 +56,55 @@ void EnemyShips::ShipMovements(float a_speed)
 	ChangeX(a_speed, 1);
 	}
 	}*/
-	if (left == false && right == false || left == true && right == true)
-	{
-		Direction();
-	}
+		/*if (right == true && GetX() < 800)
+		{
+		//x += .04f;
+		ChangeX(a_speed, 1);
+		if (GetX() > 800) {
+		thisDirection = true;
+		}
 
-	if (left == true && GetX() > 0)
+		//change the direction from right to left
+		if (right = true && GetX() >= 900)
+		{
+		right = false;
+		left = true;
+		}
+		}*/
+
+		//if (thisDirection == true)
+		//{
+
+
+	/*if (left == true && GetX() > 0)
 	{
 		//x -= .04f;
 		ChangeX(a_speed, 2);
 		if (GetX() < 0) {
 			thisDirection = true;
 		}
-	}
 
-	if (right == true && GetX() < 800)
-	{
-		//x += .04f;
-		ChangeX(a_speed, 1);
-		if (GetX() > 800) {
-			thisDirection = true;
-		}
-	}
-
-	if (thisDirection == true)
-	{
 		//Change direction from left to right
 		if (left == true && GetX() <= 0) //Continue Here
 		{
 			left = false;
 			right = true;
 		}
+	}*/
 
-		//change the direction from right to left
-		if (right = true && GetX() >= 900)
+
+	if (GetY() > 0)
 		{
-			right = false;
-			left = true;
+			ChangeY(a_speed, 2);
 		}
-
-		if (GetY() > 0)
-		{
-
-			//y -= 4.f;
-			//ChangeY(a_speed, 2);
-
-		}
-	}
-	MoveSprite(GetSprite(), GetX(), GetY());
+	SetCorners();
 }
 
 void EnemyShips::Direction()
 {
 	srand(time(NULL));
-	direction = rand() % 2 + 1;
+	//direction = rand() % 2 + 1;
+	newLocation = rand() % 750 + 49;
 	
 		if (direction == 1)
 		{
@@ -116,8 +116,13 @@ void EnemyShips::Direction()
 			right = true;
 		}
 
+		if (newLocation > 0)
+		{
+			this->ChangeX(newLocation, 3);
+		}
+
+		newLocation = 0;
 		direction = 0;
-		once++;
 }
 
 EnemyShips::~EnemyShips()

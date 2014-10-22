@@ -8,8 +8,8 @@ Entity::Entity()
 
 Entity::Entity(float a_x, float a_y, float a_width, float a_heigth, const char* a_spritePath)
 {
-	SetX(a_x);
-	SetY(a_y);
+	x = a_x;
+	y = a_y;
 	SetWidth(a_width);
 	SetHeigth(a_heigth);
 	SetSpritePath(a_spritePath);
