@@ -116,9 +116,9 @@ void Player::Move(float a_speed, float a_timeStep)
 		for (int i = 0; i < Max_Bullets; i++)
 		{
 			Shoot((*playerBullets[i]).bulletTextureID, GetDeltaTime());
-			//(*playerBullets[i]).Draw();
-			MoveSprite((*playerBullets[i]).bulletTextureID, (*playerBullets[i]).x, (*playerBullets[i]).y);
-			DrawSprite((*playerBullets[i]).bulletTextureID);
+			(*playerBullets[i]).Draw();
+			//MoveSprite((*playerBullets[i]).bulletTextureID, (*playerBullets[i]).x, (*playerBullets[i]).y);
+			//DrawSprite((*playerBullets[i]).bulletTextureID);
 		}
 	}
 
@@ -129,9 +129,8 @@ void Player::Move(float a_speed, float a_timeStep)
 	{
 		if (currentRealodBulletTime >= maxBulletReloadTime)
 		{
-			
-			//MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
-			//DrawSprite(bullets[i].bulletTextureID);
+			MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
+			DrawSprite(bullets[i].bulletTextureID);
 		}
 	}
 	
