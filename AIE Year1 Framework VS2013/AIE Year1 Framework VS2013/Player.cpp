@@ -51,6 +51,7 @@ void Player::Shoot(unsigned int a_textureID, float delta)
 		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0.0f, 0.5f, a_textureID);
 		for (int i = 0; i < Max_Bullets; i++)
 		{
+			(*playerBullets[i]).isActive = true;
 			(*playerBullets[i]).Update(GetDeltaTime());
 		}
 	}
@@ -73,15 +74,7 @@ Bullet& Player::GetInactiveBullet()
 		}*/
 		setTextures = true;
 	}
-	for (int i = 0; i < Max_Bullets; i++)
-	{
-		if (!(*playerBullets[i]).isActive && currentRealodBulletTime >= maxBulletReloadTime)
-		{
-			//return bullets[i];
-			return (*playerBullets[i]);
-		}
 
-	}
 	for (int i = 0; i < Max_Bullets; i++)
 	{
 		return (*playerBullets[i]);
@@ -116,9 +109,6 @@ void Player::Move(float a_speed, float a_timeStep)
 		for (int i = 0; i < Max_Bullets; i++)
 		{
 			Shoot((*playerBullets[i]).bulletTextureID, GetDeltaTime());
-			(*playerBullets[i]).Draw();
-			//MoveSprite((*playerBullets[i]).bulletTextureID, (*playerBullets[i]).x, (*playerBullets[i]).y);
-			//DrawSprite((*playerBullets[i]).bulletTextureID);
 		}
 	}
 
@@ -129,8 +119,7 @@ void Player::Move(float a_speed, float a_timeStep)
 	{
 		if (currentRealodBulletTime >= maxBulletReloadTime)
 		{
-			MoveSprite(bullets[i].bulletTextureID, bullets[i].x, bullets[i].y);
-			DrawSprite(bullets[i].bulletTextureID);
+			(*playerBullets[i]).Draw();
 		}
 	}
 	
