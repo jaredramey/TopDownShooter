@@ -10,7 +10,7 @@ class GlobalInfo
 {
 public:
 
+
 	GlobalInfo();
 	~GlobalInfo();
 };
-

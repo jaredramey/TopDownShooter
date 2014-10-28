@@ -35,10 +35,10 @@ float Player::GetBulletY()
 	return bulletY;
 }
 
-void Player::CheckBulletCollision(float a_corner1, float a_corner2, float a_corner3, float a_corner4, int bulletNum)
+void Player::CheckBulletCollision(float a_Y, float a_width, float a_X, float a_heigth, int bulletNum)
 {
 	//Corner1 = lower left, Corner2 = lower Right, Corner3 = upper Left, corner4 = upper Right
-	if ((*playerBullets[bulletNum]).x >= a_corner1 && (*playerBullets[bulletNum]).x <= a_corner3)
+	if ((*playerBullets[1]).y == (a_Y + a_width) || (*playerBullets[1]).y == (a_Y - a_width) && (*playerBullets[1]).x == (a_X + a_heigth) || (*playerBullets[1]).x == (a_X - a_heigth))
 	{
 		bulletCollision = true;
 	}
@@ -152,7 +152,7 @@ void Player::Move(float a_speed, float a_timeStep)
 	{
 		if (currentRealodBulletTime >= maxBulletReloadTime)
 		{
-			(*playerBullets[i]).Update(100.f);
+			(*playerBullets[i]).Update(10.f);
 			(*playerBullets[i]).Draw();
 		}
 	}
