@@ -20,6 +20,7 @@ void HowTo();
 void GetHighScore();
 void DisplayHighScore();
 
+//enum to handle the current gamestate
 enum Gamestates
 {
 	eSPLASHSCREEN,
@@ -29,6 +30,7 @@ enum Gamestates
 	eHIGHSCORE
 };
 
+//quick struct for player score so I can output it onto to screen later
 struct Score
 {
 	int score = 0;
@@ -36,21 +38,29 @@ struct Score
 };
 Score scoreOne;
 
+//an int I can use and loop on later
+int playerLives = PlayerLives;
 
 int main( int argc, char* argv[] )
 {	
+	//initialize the AIE Framework
     Initialise(screenWidth, screenHeigth, false, "Top Down Shooter");
     SetBackgroundColour(SColour(0, 0, 0, 255));
 
+	//ect variables
 	bool gameLoop = true;
+	bool damage = false;
 	int loadUp = 0;
+	float damageRecovery = 0;
+	
 
-	//Initiate Player and set ect. values
-	unsigned int cornerCheck1 = CreateSprite("./images/spaceArt/png/laserGreenShot.png", 28, 26, true);
-	unsigned int cornerCheck2 = CreateSprite("./images/spaceArt/png/laserGreen.png", 28, 26, true);
-	unsigned int cornerCheck3 = CreateSprite("./images/spaceArt/png/laserRedShot.png", 28, 26, true);
+	
+	unsigned int cornerCheck1 = CreateSprite("./images/spaceArt/png/life.png", 28, 26, true);
+	unsigned int cornerCheck2 = CreateSprite("./images/spaceArt/png/life.png", 28, 26, true);
+	unsigned int cornerCheck3 = CreateSprite("./images/spaceArt/png/life.png", 28, 26, true);
 	unsigned int cornerCheck4 = CreateSprite("./images/spaceArt/png/laserRed.png", 28, 26, true);
-
+	
+	//Initiate Player and set ect. values
 	Player player = Player();
 	player.SetVelocity(300.f);
 	player.SetMovementKeys(65, 68, 32);
@@ -58,8 +68,7 @@ int main( int argc, char* argv[] )
 	EnemyShips enemy = EnemyShips();
 	GlobalInfo globalInfo = GlobalInfo();
 
-	
-
+	//create and fill a vector of ships
 	std::vector<EnemyShips*> ships;
 	for (int i = 0; i < 20; i++)
 	{
@@ -67,6 +76,7 @@ int main( int argc, char* argv[] )
 		(*ships[i]).isActive = true;
 	}
 
+	//set current state to splash screen
 	Gamestates eCurrentState = eSPLASHSCREEN;
 
     //Game Loop
@@ -77,6 +87,7 @@ int main( int argc, char* argv[] )
 
 		switch (eCurrentState)
 		{
+			//Splash screen
 		case eSPLASHSCREEN:
 			SplashScreen();
 			if (IsKeyDown(259))
@@ -85,6 +96,7 @@ int main( int argc, char* argv[] )
 			}
 			break;
 
+			//Main Menu
 		case eMAINEMENU:
 			MainMenu();
 			//if enter is pressed change state to gameplay
@@ -99,6 +111,8 @@ int main( int argc, char* argv[] )
 				eCurrentState = eHOWTO;
 			}
 
+			//Add one more for leaderboards
+
 			//if ESC is pressed then exit the program
 			if (IsKeyDown(256))
 			{
@@ -106,17 +120,23 @@ int main( int argc, char* argv[] )
 			}
 			break;
 
+			//Leaderboard
 		case eHIGHSCORE:
 			GetHighScore();
 			DisplayHighScore();
+			//return to main menu
 			if (IsKeyDown(259))
 			{
 				eCurrentState = eMAINEMENU;
 			}
 			break;
 
+			//How To play section
 		case eHOWTO:
 			HowTo();
+			GetHighScore();
+			DisplayHighScore();
+			//return to main menu
 			if (IsKeyDown(259))
 			{
 				eCurrentState = eMAINEMENU;
@@ -126,13 +146,13 @@ int main( int argc, char* argv[] )
 
 
 		case eGAMPLAY:
-		
+		//return to main menu and reset all values
 			if (IsKeyDown(259))
 			{
 				eCurrentState = eMAINEMENU;
 			}
 
-
+			//Move the player
 			player.Move(500.f, GetDeltaTime());
 			DrawSprite(player.GetSprite());
 
@@ -147,27 +167,96 @@ int main( int argc, char* argv[] )
 				}
 			}
 
+			//Check to see if the bullet has hit anything and if it has then up player score
 			for (int i = 0; i < 20; i++)
 			{
-				player.CheckBulletCollision((*ships[i]).GetY(), (*ships[i]).GetWidth(), (*ships[i]).GetX(), (*ships[i]).GetHeigth(), i);
-				if (player.bulletCollision == true)
+				if (player.CheckBulletCollision((*ships[i]).GetLowLeftCornerX(), (*ships[i]).GetUpRightCornerX(), (*ships[i]).GetUpLeftCornerY(), (*ships[i]).GetLowRightCornerY(), i) == true)
 				{
-					//(*ships[i]).isActive = false;
+					(*ships[i]).isActive = false;
 					scoreOne.score += 10;
 				}
 			}
 
+			//check to see if the player has run into any ships and if it has then loose a life
+			for (int i = 0; i < 20; i++)
+			{
+				//added if statement so player doesn't loose all their life in one go
+				if (damageRecovery == 0)
+				{
+					for (int i = 0; i < 20; i++)
+					{
+						if ((player.GetX() >= ((*ships[i]).GetLowLeftCornerX()) && player.GetX() <= ((*ships[i]).GetLowRightCornerX())) && (player.GetY() <= (*ships[i]).GetUpLeftCornerY() && player.GetY() >= (*ships[i]).GetLowRightCornerY()))
+						{
+							playerLives--;
+							damageRecovery += 100;
+						}
+					}
+				}
+			}
 
-			MoveSprite(cornerCheck1, (*ships[10]).GetUpLeftCornerX(), (*ships[10]).GetUpLeftCornerY());
-			MoveSprite(cornerCheck2, (*ships[10]).GetUpRightCornerX(), (*ships[10]).GetUpRightCornerY());
-			MoveSprite(cornerCheck3, (*ships[10]).GetLowLeftCornerX(), (*ships[10]).GetLowLeftCornerY());
-			MoveSprite(cornerCheck4, (*ships[10]).GetLowRightCornerX(), (*ships[10]).GetLowRightCornerY());
-			DrawSprite(cornerCheck1);
-			DrawSprite(cornerCheck2);
-			DrawSprite(cornerCheck3);
-			DrawSprite(cornerCheck4);
+			//change damage back to false so collision can check again
+			if (damageRecovery > 0)
+				damageRecovery -= .5f;
 
+			//output player score and player lives
 			DrawString(itoa(scoreOne.score, scoreOne.theScore, 10), screenWidth* 0.15f, screenHeigth *0.05f);
+
+			if (playerLives == 3)
+			{
+				MoveSprite(cornerCheck1, screenWidth* 0.95f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck1);
+				MoveSprite(cornerCheck2, screenWidth* 0.9f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck2);
+				MoveSprite(cornerCheck3, screenWidth* 0.85f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck3);
+			}
+
+			else if (playerLives == 2)
+			{
+				MoveSprite(cornerCheck1, screenWidth* 0.95f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck1);
+				MoveSprite(cornerCheck2, screenWidth* 0.9f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck2);
+			}
+
+			else if (playerLives == 1)
+			{
+				MoveSprite(cornerCheck1, screenWidth* 0.95f, screenHeigth *0.05f);
+				DrawSprite(cornerCheck1);
+			}
+
+			else
+			{
+				//If the game ends then track the score for next game
+				HighScore.open("HighScore.txt", ios_base::out);
+
+				if (HighScore.is_open())
+				{
+					//write score into file
+					HighScore << scoreOne.score << endl;
+
+					//Change gamestate to End
+					eCurrentState = eMAINEMENU;
+				}
+				//If something happens then tell the user
+				else
+				{
+					DrawString("Couldn't save Score!", screenWidth - 615, screenHeigth - 200);
+				}
+
+				//Close the file
+				HighScore.close();
+
+				//reset all values
+				player.ChangeX(screenWidth*.5f, 3);
+				for (int i = 0; i < 20; i++)
+				{
+					(*ships[i]).ChangeY(1100, 3);
+				}
+				scoreOne.score = 0;
+				playerLives = 3;
+			}
+
 			break;
 		}
 
@@ -185,13 +274,12 @@ void SplashScreen()
 	do{
 		DrawString("Loading...", 400, 500);
 		waiting++;
-		if (waiting > 1000)
-		{
-			DrawString("Press BackSpace", 400, 450);
-		}
-	} while (loop = true);
+		DrawString("Press BackSpace", 380, 450);
+
+	} while (waiting < 1000);
 }
 
+//everything in main menu
 void MainMenu()
 {
 	DrawString("TOP DOWN SHOOTER", screenWidth - 675, screenHeigth - 100);
@@ -201,6 +289,7 @@ void MainMenu()
 	DrawString("Press Escape to quit", screenWidth - 630, screenHeigth - 350);
 }
 
+//everything in how to
 void HowTo()
 {
 	DrawString("How to Play", screenWidth - 615, screenHeigth - 200);
@@ -210,7 +299,7 @@ void HowTo()
 	DrawString("Press Backspace to return to Main Menu", screenWidth - 740, screenHeigth - 450);
 }
 
-
+//Get highscores and Display them
 void GetHighScore()
 {
 	HighScore.open("HighScore.txt", ios_base::in);

@@ -1,44 +1,31 @@
-﻿Build started 10/28/2014 4:08:07 AM.
+﻿Build started 10/28/2014 3:04:42 PM.
      1>Project "C:\Users\Oezaxs\Documents\GitHub\TopDownShooter\AIE Year1 Framework VS2013\AIE Year1 Framework VS2013\AIE Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bullet.cpp EnemyShips.cpp Entity.cpp GameState.cpp GlobalInfo.cpp Player.cpp source\main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I./ /I./include/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\\" /Fd"obj\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt source\main.cpp
          main.cpp
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(42): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(66): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(170): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(170): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(47): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(75): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(202): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(202): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(197): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(198): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(199): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(200): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(201): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(206): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(207): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(208): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(209): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(210): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(228): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(244): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(285): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(286): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(287): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(288): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(289): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(295): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(296): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(297): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(298): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(299): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(317): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(317): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(233): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(234): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(235): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(236): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-         Player.cpp
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\player.cpp(72): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\player.cpp(77): warning C4244: 'return' : conversion from 'unsigned int' to 'float', possible loss of data
-         GlobalInfo.cpp
-         GameState.cpp
-         Entity.cpp
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\entity.cpp(72): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-         EnemyShips.cpp
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\enemyships.cpp(19): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\enemyships.cpp(38): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\enemyships.cpp(40): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-         Bullet.cpp
-         Generating Code...
-     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\player.cpp(114): warning C4715: 'Player::GetInactiveBullet' : not all control paths return a value
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(322): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(323): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(324): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\oezaxs\documents\github\topdownshooter\aie year1 framework vs2013\aie year1 framework vs2013\source\main.cpp(325): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\AIE Template_d.exe" /INCREMENTAL /NOLOGO /LIBPATH:./libs AIE_1st_Year_Framework_d.lib kernel32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"bin\AIE Template_d.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\AIE Template_d.lib" /MACHINE:X86 obj\Bullet.obj
          obj\EnemyShips.obj
@@ -80,4 +67,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.85
+Time Elapsed 00:00:06.17

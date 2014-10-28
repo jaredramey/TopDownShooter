@@ -3,7 +3,7 @@
 #include "Bullet.h"
 #include <vector>
 
-const int Max_Bullets = 20;
+const int Max_Bullets = 2;
 
 class Player : public Entity
 {
@@ -35,7 +35,7 @@ public:
 	void UpdateBulletPos(float a_bulletX, float a_bulletY);
 	float GetBulletX();
 	float GetBulletY();
-	void CheckBulletCollision(float a_corner1, float a_corner2, float a_corner3, float a_corner4, int bulletNum);
+	bool CheckBulletCollision(float a_corner1, float a_corner2, float a_corner3, float a_corner4, int bulletNum);
 	void SetMovementKeys(unsigned int a_moveLeft, unsigned int a_moveRight, unsigned int a_jump);
 	void SetMoveExtreeme(float a_leftExtreeme, float a_rightExtreeme);
 	void SetVelocity(float a_velocity);

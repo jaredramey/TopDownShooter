@@ -35,17 +35,16 @@ float Player::GetBulletY()
 	return bulletY;
 }
 
-void Player::CheckBulletCollision(float a_Y, float a_width, float a_X, float a_heigth, int bulletNum)
+bool Player::CheckBulletCollision(float a_x1, float a_x2, float a_y1, float a_y2, int bulletNum)
 {
+	//origionally modeled off of: ((*playerBullets[0]).x >= a_x1 && (*playerBullets[0]).x <= a_x2) && ((*playerBullets[0]).y <= a_y1 && (*playerBullets[0]).y >= a_y2)
 	//Corner1 = lower left, Corner2 = lower Right, Corner3 = upper Left, corner4 = upper Right
-	if ((*playerBullets[1]).y == (a_Y + a_width) || (*playerBullets[1]).y == (a_Y - a_width) && (*playerBullets[1]).x == (a_X + a_heigth) || (*playerBullets[1]).x == (a_X - a_heigth))
+	for (int i = 0; i < Max_Bullets; i++)
 	{
-		bulletCollision = true;
-	}
-
-	else
-	{
-		bulletCollision = false;
+		if (((*playerBullets[i]).x >= a_x1 && (*playerBullets[i]).x <= a_x2) && ((*playerBullets[i]).y <= a_y1 && (*playerBullets[i]).y >= a_y2))
+		{//(((*playerBullets[1]).GetX() >= a_x1 && (*playerBullets[1]).GetX() <= a_x2) && ((*playerBullets[1]).GetY() <= a_y1 && (playerBullets[1]).GetY >= a_y2)
+			return true;
+		}
 	}
 }
 
