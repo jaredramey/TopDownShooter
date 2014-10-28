@@ -58,6 +58,7 @@ public:
 
 	unsigned int GetSprite();
 
+	virtual bool CheckCollision(Entity &other);
 
 	Entity();
 	Entity(float a_x, float a_y, float a_width, float a_heigth, const char* a_spriteID);

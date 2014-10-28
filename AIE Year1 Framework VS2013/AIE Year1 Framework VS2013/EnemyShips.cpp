@@ -21,82 +21,15 @@ EnemyShips::EnemyShips(float a_x, float a_y) : Entity(a_x, a_y, ENEMY_WIDTH, ENE
 
 void EnemyShips::ShipMovements(float a_speed)
 {
-	/*if (left == false && right == false)
-	{
-	Direction();
-	}
-
-	if (left == true)
-	{
-	if (GetX() < (0 + GetWidth()*.5))
-	{
-	left == false;
-	right == true;
-	ChangeX(a_speed, 1);
-
-	}
-
-	if (GetX() > (0 + GetWidth()*.5) && left == true)
-	{
-	ChangeX(a_speed, 2);
-	}
-	}
-
-	if (right == true)
-	{
-	if (GetX() > (800 - GetWidth()*.5))
-	{
-	right == false;
-	left == true;
-	ChangeX(a_speed, 2);
-	}
-
-	if (GetX() > (800 - GetWidth()*.5) && right == true)
-	{
-	ChangeX(a_speed, 1);
-	}
-	}*/
-		/*if (right == true && GetX() < 800)
-		{
-		//x += .04f;
-		ChangeX(a_speed, 1);
-		if (GetX() > 800) {
-		thisDirection = true;
-		}
-
-		//change the direction from right to left
-		if (right = true && GetX() >= 900)
-		{
-		right = false;
-		left = true;
-		}
-		}*/
-
-		//if (thisDirection == true)
-		//{
-
-
-	/*if (left == true && GetX() > 0)
-	{
-		//x -= .04f;
-		ChangeX(a_speed, 2);
-		if (GetX() < 0) {
-			thisDirection = true;
-		}
-
-		//Change direction from left to right
-		if (left == true && GetX() <= 0) //Continue Here
-		{
-			left = false;
-			right = true;
-		}
-	}*/
-
-
 	if (GetY() > 0)
 		{
 			ChangeY(a_speed, 2);
 		}
+
+	if (GetY() <= 0)
+	{
+		ChangeY(1100, 3);
+	}
 	SetCorners();
 }
 
@@ -123,6 +56,16 @@ void EnemyShips::Direction()
 
 		newLocation = 0;
 		direction = 0;
+}
+
+void EnemyShips::Collide(Entity &other)
+{
+
+}
+
+bool EnemyShips::GetActive(bool a_collision)
+{
+	return true;
 }
 
 EnemyShips::~EnemyShips()

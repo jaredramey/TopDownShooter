@@ -17,6 +17,9 @@ public:
 	void ShipMovements(float speed);
 	void Direction();
 	void LocationSpawn(float a_x, float a_y);
+	bool GetActive(bool a_collision);
+
+	void Collide(Entity &other);
 
 	EnemyShips();
 	EnemyShips(float a_x, float a_y);

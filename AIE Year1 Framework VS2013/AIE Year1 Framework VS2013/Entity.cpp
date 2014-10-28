@@ -190,6 +190,26 @@ unsigned int Entity::GetSprite()
 	return this->spritePath;
 }
 
+bool Entity::CheckCollision(Entity &other)
+{
+	float xDifference = this->GetX() - other.GetX();
+	float yDifference = this->GetX() - other.GetX();
+
+	if (xDifference < 0)
+	{
+		xDifference *= -1;
+	}
+
+	if (yDifference < 0)
+	{
+		yDifference *= -1;
+	}
+
+	float rad = (this->GetWidth() / 2) + (other.GetWidth() / 2);
+
+	return ((xDifference * xDifference) + (yDifference * yDifference) <= rad*rad);
+}
+
 
 
 Entity::~Entity()
