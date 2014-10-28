@@ -13,26 +13,26 @@ void Bullet::TextureID(unsigned int a_textureID)
 
 void Bullet::Draw()
 {
-	if (isActive)
-	{
+	/*if (isActive)
+	{*/
 		MoveSprite(bulletTextureID, x, y);
 		DrawSprite(bulletTextureID);
-	}
 }
 
 void Bullet::Update(float delta)
 {
 
-	if (y > 1000)
+	/*if (y > 1000)
 	{
 		isActive = false;
-	}
+	}*/
 
-	if (isActive)
-	{
-		x += velocityX * delta;
+	//if (isActive)
+	
+		//x += velocityX * delta;
 		y += velocityY * delta;
-	}
+	
+
 }
 
 void Bullet::InitializeBullet(float a_x, float a_y, float a_velocityX, float a_velocityY, unsigned int a_textureID)
@@ -43,6 +43,11 @@ void Bullet::InitializeBullet(float a_x, float a_y, float a_velocityX, float a_v
 	velocityY = a_velocityY;
 
 	isActive = true;
+}
+
+unsigned int Bullet::GetBulletTexture()
+{
+	return bulletTextureID;
 }
 
 Bullet::~Bullet()

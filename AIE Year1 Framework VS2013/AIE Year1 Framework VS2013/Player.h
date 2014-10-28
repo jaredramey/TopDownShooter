@@ -1,8 +1,9 @@
 #pragma once
 #include "Entity.h"
 #include "Bullet.h"
+#include <vector>
 
-const int Max_Bullets = 5;
+const int Max_Bullets = 20;
 
 class Player : public Entity
 {
@@ -23,10 +24,18 @@ public:
 
 	//Everything for Bullets handled by Player
 	Bullet bullets[Max_Bullets];
+	std::vector<Bullet*> playerBullets;
 	float currentRealodBulletTime = 0.0f;
 	float maxBulletReloadTime = 1.0f;
 	bool setTextures = false;
+	float bulletX;
+	float bulletY;
+	bool bulletCollision = false;
 
+	void UpdateBulletPos(float a_bulletX, float a_bulletY);
+	float GetBulletX();
+	float GetBulletY();
+	void CheckBulletCollision(float a_corner1, float a_corner2, float a_corner3, float a_corner4, int bulletNum);
 	void SetMovementKeys(unsigned int a_moveLeft, unsigned int a_moveRight, unsigned int a_jump);
 	void SetMoveExtreeme(float a_leftExtreeme, float a_rightExtreeme);
 	void SetVelocity(float a_velocity);

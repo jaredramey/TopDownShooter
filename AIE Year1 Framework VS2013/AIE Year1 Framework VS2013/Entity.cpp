@@ -8,8 +8,8 @@ Entity::Entity()
 
 Entity::Entity(float a_x, float a_y, float a_width, float a_heigth, const char* a_spritePath)
 {
-	SetX(a_x);
-	SetY(a_y);
+	x = a_x;
+	y = a_y;
 	SetWidth(a_width);
 	SetHeigth(a_heigth);
 	SetSpritePath(a_spritePath);
@@ -188,6 +188,26 @@ float Entity::GetLowRightCornerY()
 unsigned int Entity::GetSprite()
 {
 	return this->spritePath;
+}
+
+bool Entity::CheckCollision(Entity &other)
+{
+	float xDifference = this->GetX() - other.GetX();
+	float yDifference = this->GetX() - other.GetX();
+
+	if (xDifference < 0)
+	{
+		xDifference *= -1;
+	}
+
+	if (yDifference < 0)
+	{
+		yDifference *= -1;
+	}
+
+	float rad = (this->GetWidth() / 2) + (other.GetWidth() / 2);
+
+	return ((xDifference * xDifference) + (yDifference * yDifference) <= rad*rad);
 }
 
 

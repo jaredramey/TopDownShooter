@@ -10,7 +10,43 @@ const float Player::PLAYER_HEIGTH = 75;
 
 Player::Player() : Entity(PLAYER_X, PLAYER_Y, PLAYER_WIDTH, PLAYER_HEIGTH, PLAYER_SPRITE_PATH)
 {
+	for (int i = 0; i < Max_Bullets; i++)
+	{
+		playerBullets.push_back(new Bullet());
+	}
+}
 
+void Player::UpdateBulletPos(float a_bulletX, float a_bulletY)
+{
+	for (int i = 0; i < Max_Bullets; i++)
+	{
+		bulletX = (*playerBullets[i]).x;
+		bulletY = (*playerBullets[i]).y;
+	}
+}
+
+float Player::GetBulletX()
+{
+	return bulletX;
+}
+
+float Player::GetBulletY()
+{
+	return bulletY;
+}
+
+void Player::CheckBulletCollision(float a_Y, float a_width, float a_X, float a_heigth, int bulletNum)
+{
+	//Corner1 = lower left, Corner2 = lower Right, Corner3 = upper Left, corner4 = upper Right
+	if ((*playerBullets[1]).y == (a_Y + a_width) || (*playerBullets[1]).y == (a_Y - a_width) && (*playerBullets[1]).x == (a_X + a_heigth) || (*playerBullets[1]).x == (a_X - a_heigth))
+	{
+		bulletCollision = true;
+	}
+
+	else
+	{
+		bulletCollision = false;
+	}
 }
 
 void Player::SetVelocity(float a_velocity)
@@ -45,7 +81,11 @@ void Player::Shoot(unsigned int a_textureID, float delta)
 {
 	if (IsKeyDown(32) /*&& currentRealodBulletTime >= maxBulletReloadTime*/)
 	{
-		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0, 100, a_textureID);
+		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0.0f, 0.5f, a_textureID);
+		for (int i = 0; i < Max_Bullets; i++)
+		{
+			(*playerBullets[i]).Update(GetDeltaTime());
+		}
 	}
 
 	currentRealodBulletTime += delta;
@@ -57,20 +97,20 @@ Bullet& Player::GetInactiveBullet()
 	{
 		for (int i = 0; i < Max_Bullets; i++)
 		{
-			bullets[i].bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
+			(*playerBullets[i]).bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
 		}
+
+		/*for (int i = 0; i < Max_Bullets; i++)
+		{
+			bullets[i].bulletTextureID = CreateSprite("./images/spaceArt/png/laserRed.png", 15, 60, true);
+		}*/
 		setTextures = true;
 	}
+
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		if (!bullets[i].isActive && currentRealodBulletTime >= maxBulletReloadTime)
-		{
-			return bullets[i];
-		}
-
+		return (*playerBullets[i]);
 	}
-
-	return bullets[0];
 }
 
 void Player::Move(float a_speed, float a_timeStep)
@@ -98,12 +138,25 @@ void Player::Move(float a_speed, float a_timeStep)
 	//Shooting
 	if (IsKeyDown(fire))
 	{
-	
+		for (int i = 0; i < Max_Bullets; i++)
+		{
+			(*playerBullets[i]).isActive = true;
+			Shoot((*playerBullets[i]).bulletTextureID, GetDeltaTime());
+		}
 	}
 
 	//Move the player sprite and it's corners
 	SetCorners();
 	MoveSprite(GetSprite(), GetX(), GetY());
+	for (int i = 0; i < Max_Bullets; i++ )
+	{
+		if (currentRealodBulletTime >= maxBulletReloadTime)
+		{
+			(*playerBullets[i]).Update(10.f);
+			(*playerBullets[i]).Draw();
+		}
+	}
+	
 }
 
 Player::~Player()
