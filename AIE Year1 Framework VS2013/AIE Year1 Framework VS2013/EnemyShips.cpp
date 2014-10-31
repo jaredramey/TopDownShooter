@@ -21,15 +21,25 @@ EnemyShips::EnemyShips(float a_x, float a_y) : Entity(a_x, a_y, ENEMY_WIDTH, ENE
 
 void EnemyShips::ShipMovements(float a_speed)
 {
-	if (GetY() > 0)
+	if (isActive == true)
+	{
+		if (GetY() > 0)
 		{
 			ChangeY(a_speed, 2);
 		}
 
-	if (GetY() <= 0)
+		if (GetY() <= 0)
+		{
+			ChangeY(1100, 3);
+		}
+	}
+
+	else if (isActive == false)
 	{
 		ChangeY(1100, 3);
+		isActive = true;
 	}
+
 	SetCorners();
 }
 
