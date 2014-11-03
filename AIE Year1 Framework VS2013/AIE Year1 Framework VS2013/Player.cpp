@@ -20,8 +20,11 @@ void Player::UpdateBulletPos(float a_bulletX, float a_bulletY)
 {
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		bulletX = (*playerBullets[i]).x;
-		bulletY = (*playerBullets[i]).y;
+		if ((*playerBullets[i]).isActive == true)
+		{
+			bulletX = (*playerBullets[i]).x;
+			bulletY = (*playerBullets[i]).y;
+		}
 	}
 }
 
@@ -42,7 +45,8 @@ bool Player::CheckBulletCollision(float a_x1, float a_x2, float a_y1, float a_y2
 	for (int i = 0; i < Max_Bullets; i++)
 	{
 		if (((*playerBullets[i]).x >= a_x1 && (*playerBullets[i]).x <= a_x2) && ((*playerBullets[i]).y <= a_y1 && (*playerBullets[i]).y >= a_y2))
-		{//(((*playerBullets[1]).GetX() >= a_x1 && (*playerBullets[1]).GetX() <= a_x2) && ((*playerBullets[1]).GetY() <= a_y1 && (playerBullets[1]).GetY >= a_y2)
+		{
+			(*playerBullets[i]).isActive = false;
 			return true;
 		}
 	}
@@ -83,6 +87,7 @@ void Player::Shoot(unsigned int a_textureID, float delta)
 		GetInactiveBullet().InitializeBullet(GetX(), GetY(), 0.0f, 0.5f, a_textureID);
 		for (int i = 0; i < Max_Bullets; i++)
 		{
+			(*playerBullets[i]).isActive = true;
 			(*playerBullets[i]).Update(GetDeltaTime());
 		}
 	}
