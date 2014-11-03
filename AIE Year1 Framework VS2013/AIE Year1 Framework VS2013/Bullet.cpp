@@ -13,25 +13,25 @@ void Bullet::TextureID(unsigned int a_textureID)
 
 void Bullet::Draw()
 {
-	/*if (isActive)
-	{*/
+	if (isActive == true)
+	{
 		MoveSprite(bulletTextureID, x, y);
 		DrawSprite(bulletTextureID);
+	}
 }
 
 void Bullet::Update(float delta)
 {
 
-	/*if (y > 1000)
+	if (y > 1000)
 	{
 		isActive = false;
-	}*/
+	}
 
-	//if (isActive)
-	
-		//x += velocityX * delta;
+	if (isActive == true)
+	{
 		y += velocityY * delta;
-	
+	}
 
 }
 

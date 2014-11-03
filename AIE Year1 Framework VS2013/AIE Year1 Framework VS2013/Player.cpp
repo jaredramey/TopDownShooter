@@ -20,11 +20,10 @@ void Player::UpdateBulletPos(float a_bulletX, float a_bulletY)
 {
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		if ((*playerBullets[i]).isActive == true)
-		{
+		
 			bulletX = (*playerBullets[i]).x;
 			bulletY = (*playerBullets[i]).y;
-		}
+		
 	}
 }
 
@@ -41,10 +40,9 @@ float Player::GetBulletY()
 bool Player::CheckBulletCollision(float a_x1, float a_x2, float a_y1, float a_y2, int bulletNum)
 {
 	//origionally modeled off of: ((*playerBullets[0]).x >= a_x1 && (*playerBullets[0]).x <= a_x2) && ((*playerBullets[0]).y <= a_y1 && (*playerBullets[0]).y >= a_y2)
-	//Corner1 = lower left, Corner2 = lower Right, Corner3 = upper Left, corner4 = upper Right
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		if (((*playerBullets[i]).x >= a_x1 && (*playerBullets[i]).x <= a_x2) && ((*playerBullets[i]).y <= a_y1 && (*playerBullets[i]).y >= a_y2))
+		if ((((*playerBullets[i]).x >= a_x1 && (*playerBullets[i]).x <= a_x2) && ((*playerBullets[i]).y <= a_y1 && (*playerBullets[i]).y >= a_y2)) && (*playerBullets[i]).isActive == true)
 		{
 			(*playerBullets[i]).isActive = false;
 			return true;
